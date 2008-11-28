@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en" py:strip="">
+  <py:match path="head" once="true">
+    <head py:attrs="select('@*')">
+      <title py:with="title = list(select('title/text()'))">
+        Firewall Admin<py:if test="title">: ${title}</py:if>
+      </title>
+      <py:match path="style">${select('text()')}</py:match>
+      <style type="text/css" media="screen">
+        @import url("/static/style.css");
+        ${select('style/text()')}
+      </style>
+      <meta py:replace="select('*[local-name()!=\'title\' and local-name()!=\'style\']')" />
+      <script type="text/javascript" src="/static/jquery.js"></script>
+    </head>
+  </py:match>
+  <py:match path="body" once="true">
+    <body py:attrs="select('@*')">
+      <div id="page">
+        <div id="menu" py:if="menu">
+          <ul id="menu-list">
+            <li py:for="item in menu" class="menu-item"> 
+              <a py:strip="url(item.url) == url()" href="${url(item.url)}"><span>${item.title}</span></a>
+            </li>        
+          </ul>
+        </div>
+        <div id="header">
+          <h1>Firewall Administration</h1>
+          <div class="message" py:if="message">$message</div>
+        </div>
+        ${select('//div[@id="content"]')}
+        <div id="footer">
+          <div style="float: left;">Last updated: 2007.09.14</div>
+          <div id="system_status" style="float: right;">${system_status}</div>
+        </div>
+      </div><div id="page-footer">&nbsp;</div>
+    </body>
+  </py:match>
+</html>

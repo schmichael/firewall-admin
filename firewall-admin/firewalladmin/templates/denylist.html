@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+<xi:include href="master.html" />
+  <head />
+	<body>
+    <div id="content">
+      <h2>Deny Lists</h2>
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <th style="width: 20%; text-align: left;">Category</th>
+            <th style="width: 15%;">Toggle</th>
+            <th style="width: 15%;">Delete</th>
+            <th style="width: 50%;">Rename</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr py:for="i, bl in enumerate(blacklists)" class="${i%2 and 'odd' or 'even'}">
+            <td style="text-align: left;"><i py:strip="bl.enabled"><a href="category/${bl.id}">${bl.category}</a></i></td>
+            <td py:choose="bl.enabled">
+              <a py:when="False" href="enable/${bl.id}"><img src="/static/enable.png" alt="Enable" /></a>
+              <a py:when="True" href="disable/${bl.id}"><img src="/static/disable.png" alt="Disable" /></a>
+            </td>
+            <td><a href="delete/${bl.id}" py:if="bl.id != 1"><img src="/static/delete.png" alt="Delete" /></a></td>
+            <td>
+              <form action="rename" method="post">
+                <div style="float: right;">
+                  <input name="newname" type="text" class="input-text" style="display: inline;" />
+                  <input name="category" type="hidden" class="input-hidden" value="${bl.id}" />
+                  <input type="submit" value="Rename" class="input-submit" style="display: inline;" /></div></form></td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="new" method="post">
+        <div style="margin-top: 10px;">
+          <label for="category">New Category Name:&nbsp;</label>
+          <input type="text" name="category" class="input-text" />
+          <input type="submit" value="Create" class="input-submit" />
+        </div>
+      </form>
+    </div>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+<xi:include href="master.html" />
+  <head />
+	<body>
+    <div id="content">
+      <h2>${blacklist.category} Deny List</h2>
+  	  <p>Instructions:</p>
+      <ul>
+        <li>Enter IP addresses or domain names below, <b>1 per line</b></li>
+        <li>Lines starting with <b>#</b> are comments and will be ignored.</li>
+        <li>Blank lines will be removed.</li>
+      </ul>
+  	  <form method="post" action="/denylist/save">
+  	    <div>
+  	      <textarea class="input-text" name="blacklist" rows="30" cols="60">$blacklist.blacklist</textarea>
+  	      <br />
+          <input type="hidden" name="category" value="$blacklist.id" class="input-hidden" />
+  	      <input type="submit" value="Save" class="input-submit" />
+  	    </div>
+  	  </form>
+    </div>
+	</body>
+</html>

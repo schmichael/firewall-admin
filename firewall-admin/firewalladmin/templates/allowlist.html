@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+<xi:include href="master.html" />
+  <head>
+    <title>Allow List</title>
+    <style type="text/css" media="screen">
+      label, input {
+        width: 150px;
+      }
+
+      br { clear: left; }
+    </style>
+  </head>
+	<body>
+    <div id="content">
+      <h2>Allow List</h2>
+      <table style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Internal Address</th>
+            <th>Allow Sites</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr py:for="i, al in enumerate(allowlist)" class="${i%2 and 'odd' or 'even'}">
+            <td>${al.internal}</td>
+            <td><pre style="text-align: left;">${al.allowlist}</pre></td>
+            <td><a href="delete/${al.id}"><img src="/static/delete.png" alt="Delete" /></a></td>
+          </tr>
+          <tr>
+          </tr>
+          <tr py:strip="list(allowlist)"><td colspan="3"><strong>No Allow Rules Specified</strong></td></tr>
+        </tbody>
+      </table>
+        <form action="new" method="post">
+          <fieldset>
+            <legend>Add New Allow Rule</legend>
+            <label for="internal">Internal Address:</label>
+            <input type="text" name="internal" class="input-text" />
+            <br />
+            <label for="allow_list">Allow Sites:</label>
+            <textarea style="float: left;" class="input-text" name="allow_list" rows="6" cols="30"></textarea>
+            <br />
+            <input type="submit" value="Create" class="input-submit" style="margin-left: 158px;" />
+          </fieldset>
+        </form>
+    </div>
+	</body>
+</html>

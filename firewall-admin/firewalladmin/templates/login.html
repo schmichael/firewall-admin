@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude" lang="en">
+<xi:include href="master.html" />  
+	<head>
+		<title>Firewall Administration</title>
+		<style type="text/css" media="screen">
+      label, input {
+        width: 150px;
+       }
+
+      br { clear: left; }
+		</style>
+	</head>
+	<body>
+    <div id="content">
+      <form method="post" action="do_login">
+       <div>
+         <label for="username">Username:</label>
+         <input type="text" value="$username" name="username" />
+         <br />
+         <label>Password:</label>
+         <input type="password" value="" name="password" />
+         <br />
+         <input type="hidden" value="$from_page" name="from_page" class="input-hidden" />
+         <input type="submit" value="Login" />
+       </div>
+      </form>
+      <div style="clear: both;"></div>
+    </div>
+	</body>
+</html>
