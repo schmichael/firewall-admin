@@ -1,6 +1,0 @@
-#Fri Aug 31 14:46:01 GMT 2007
-DELEGATES_PREFERENCE=delegateValidatorList
-USER_BUILD_PREFERENCE=enabledBuildValidatorListorg.eclipse.jst.jsp.core.internal.validation.JSPContentValidator;org.eclipse.wst.html.internal.validation.HTMLValidator;org.eclipse.jst.jsp.core.internal.validation.JSPBatchValidator;
-USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.jst.jsp.core.internal.validation.JSPContentValidator;org.eclipse.wst.html.internal.validation.HTMLValidator;org.eclipse.jst.jsp.core.internal.validation.JSPBatchValidator;
-USER_PREFERENCE=overrideGlobalPreferencesfalse
-eclipse.preferences.version=1
